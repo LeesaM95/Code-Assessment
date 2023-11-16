@@ -1,15 +1,27 @@
+:root {
+    --bg1: #e4e4e4;
+    --bg2: #f1d9d7;
+    --color1: #b3c4ba;
+    --color2: #f0c399;
+    --color3: #e8869f;
+    --color4: #a766aa;
+    --color5: #FAEFEE;
+}
+
+html {
+    display: flex;
+}
+
 body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: space-evenly;
     margin: 0 auto;
+
+
+    background-image: linear-gradient(var(--bg2), var(--color2));
 }
 
-main {
-    background-image: url("../assets/images/full-bloom.png");
-    background-repeat: repeat;
-}
 
 header {
     display: flex;
@@ -18,33 +30,58 @@ header {
     justify-content: space-around;
     font-family: 'Courier New', Courier, monospace;
     font-size: 18px;
-    margin-bottom: 20px;
+    margin: 20px;
+    
+    height: 125px;
+}
+
+div {
+    display: flex;
+}
+
+h4 {
+    color: var(--color3);
     
 }
 
-/* .score {
-    
-    
+footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+    color: var(--color3);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
 }
-
-#timer {
-
-} */
 
 .quiz-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* align-content: center; */
-    height: 50%;
-    width: 60%;
+    height: 500px;
+    width: 600px;
     margin: 0 auto;
     padding: 20px;
+
+    text-align: center;
+
+    background-color: var(--color5);
+    border: 8px dashed var(--color3);
+    
 }
 
 
 #style-h1 {
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
+    color: var(--color3);
+}
+
+.btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-self: center;
+    width: 600px;
+    margin: 5%;
 }
