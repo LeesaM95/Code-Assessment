@@ -1,14 +1,21 @@
 //Variables
-var timeEle = document.querySelector(".time");
-var storedScores = JSON.parse(localStorage.getItem("userData"));
-var startButton = document.getElementById("btn-start");
-var count = 60;
-var score = 0;
+var timerElm = document.querySelector(".time");
+var myScores = document.getElementById("score");
+var startBtn = document.getElementById("btn-start");
+// var wins
+// var losses
+var winCount = 0;
+var LossCount = 0;
+var isWin = false;
+var timer;
+var timerCount
+var sec = 30;
+
 
 //Consts
 const quizContainer = document.getElementById('quiz');
-const resultsContainer = document.getElementById('results');
-const submitButton = document.getElementById('submit');
+const resultBtn = document.getElementById('results');
+const submitBtn = document.getElementById('submit');
 const myQuestions = [
     {
         question: "Arrays in Javascript can be used to store: ",
@@ -64,20 +71,42 @@ const myQuestions = [
 
 //Functions
 
+
 //function for the timer
-function setTime() {
-    var timerInterval = setInterval(function(){
-        timeEle.innerText = count;
-        count--;
-        
+function startTimer() {
+    //set the timer
+    timer = setInterval(function () {
+        timerCount--;
+        timerElm.textContent = timerCount;
+        if (timerCount >= 0) {
+            //tests if win condit is met
+            if (isWin && timerCount > 0) {
+                clearInterval(timer);
+                winGame();
+            }
+        }
+        if (timerCount === 0) {
+            clearInterval(timer);
+            loseGame();
+        }
     }, 3000);
 }
 
-//function for the highscores
+
+//start the test. calls it when the start button is pressed
+function startQuiz() {
+    isWin = false;
+    timerCount = 30;
+
+    //prevent the start button from being clicked when the quiz starts
+
+    startBtn.disabled = true;
+    buildQuiz();
+    startTimer();
+};
 
 
 //function for the quiz
-
 function buildQuiz() {
     //variable to store the HTML output
     const output = [];
@@ -112,37 +141,33 @@ function buildQuiz() {
 };
 
 
-startButton.addEventListener("click", buildQuiz());
-
 //Showing the results
-function showResults() {
+function showResults(event) {
+    event.preventDefault();
     const answerContainers = quizContainer.querySelectorAll('.answers');
     let numCorrect = 0;
-
+    
     myQuestions.forEach((currentQuestion, questionNumber) => {
-    //code to run for each question
-    const answerContainer = answerContainers[questionNumber];
-    const selector = `input[name=question${questionNumber}]:checked`;
-    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+        //code to run for each question
+        const answerContainer = answerContainers[questionNumber];
+        const selector = `input[name=question${questionNumber}]:checked`;
+        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
-    //if the answer is correct
-    if(userAnswer === currentQuestion.correctAnswer){
-        //add to the number of right answers
-        numCorrect++;
+        //if the answer is correct
+        if (userAnswer === currentQuestion.correctAnswer) {
+            //add to the number of right answers
+            numCorrect++;
 
-        answerContainers[questionNumber].textContent = "Correct!".setAttribute("style", "font-size: 11px; font-style: italic; color: #D3D3D3;");
-    } else{
-        answerContainers[questionNumber].textContent = "Wrong!".setAttribute("style", "font-size: 11px; font-style: italic; color: #D3D3D3;");
-
-    }
-});
+            answerContainers[questionNumber].textContent = "Correct!".setAttribute("style", "font-size: 11px; font-style: italic; color: #D3D3D3;");
+        } else {
+            answerContainers[questionNumber].textContent = "Wrong!".setAttribute("style", "font-size: 11px; font-style: italic; color: #D3D3D3;");
+            count = count - 10;
+        }
+    });
 
     resultsContainer.innerHTML = `&{numCorrect} out of &{myQuestions.length}`;
 };
 
-//display quiz right away
 
-
-
-//on submit, show results
-submitButton.addEventListener('click', showResults);
+// //on submit, show results
+// submitButton.addEventListener('click', showResults);
