@@ -7,13 +7,12 @@
 </head>
 <body>
 
-    <main>
 <header>
-    <div class="score"><h4>View Highscores</h4></div>
-    <div id="timer"><h4>Timer: <span class="time">0</span></h4></div>
+    <div id="score"><h4>View Highscores</h4></div>
+    <div id="timer"><h4>Timer: <span id="time">0</span></h4></div>
 </header>
 
-<div class="quiz-info" id="quiz-style">
+<div class="quiz-info">
     <h1 id="style-h1">Code Assessment</h1>
     <p id="info-blurb">Try answering these code-related questions within the time limit.
         Keep in mind that the wrong answers will penalize your time by ten seconds!
@@ -22,11 +21,15 @@
 </div>
 
 
-<div id="quiz"></div>
+<div class="btns">
 <button id="submit">Submit</button>
 <button id="result-btn">See Results</button>
-</main>
+</div>
 
+
+<footer>
+    <h2>Coded by <span>Leesa G.</span></h2>
+</footer>
 <script src="./assets/java/script.js"></script>
 </body>
 </html>
