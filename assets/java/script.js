@@ -1,19 +1,17 @@
 //Variables
-var timerElm = document.querySelector(".time");
+var timerElm = document.getElementById("time");
 var myScores = document.getElementById("score");
 var startBtn = document.getElementById("btn-start");
-// var wins
-// var losses
 var winCount = 0;
 var LossCount = 0;
 var isWin = false;
-var timer;
-var timerCount
 var sec = 30;
-
+var qNum = 0;
+var answers = [];
 
 //Consts
-const quizContainer = document.getElementById('quiz');
+const output = [];
+const quizContainer = document.querySelector('.quiz-info');
 const resultBtn = document.getElementById('results');
 const submitBtn = document.getElementById('submit');
 const myQuestions = [
@@ -87,9 +85,9 @@ function startTimer() {
         }
         if (timerCount === 0) {
             clearInterval(timer);
-            loseGame();
+            // loseGame();
         }
-    }, 3000);
+    }, 1000);
 }
 
 
@@ -97,7 +95,7 @@ function startTimer() {
 function startQuiz() {
     isWin = false;
     timerCount = 30;
-
+    console.log('startQuiz');
     //prevent the start button from being clicked when the quiz starts
 
     startBtn.disabled = true;
@@ -109,65 +107,70 @@ function startQuiz() {
 //function for the quiz
 function buildQuiz() {
     //variable to store the HTML output
-    const output = [];
+
 
     //for each question
     myQuestions.forEach(
         (currentQuestion, questionNumber) => {
+            // qNum++;
             // variable to store the list of possible answers
-            const answers = [];
-
+            answers = []
             // and for each available answer
             for (letter in currentQuestion.answers) {
 
                 // add an HTML radio button
                 answers.push(
                     `<label>
-                <input type="radio" name="question${questionNumber}" value="${letter}">
+                <input type="radio" name="question${questionNumber}" value="${letter}" onclick="showNextQuestion('${letter}')">
                     ${letter} :
                     ${currentQuestion.answers[letter]}
                 </label>`,
                 );
-            }
+
+            };
+
             // adding this question and its answers to the output
             output.push(
                 `<div class="question"> ${currentQuestion.question} </div>
-                <div class="answers"> ${answers.join('')} </div>`
+                <div class="answers"> ${answers.join('')} </div>
+                <div class="feedbackCont"></div>`
             );
+
         }
     );
     //finally combine our output list into one string of HTML to put it on the page
-    quizContainer.innerHTML = output.join('');
+    // quizContainer.innerHTML = output[0];
+    showNextQuestion();
 };
 
+function showNextQuestion(value) {
 
-//Showing the results
-function showResults(event) {
-    event.preventDefault();
-    const answerContainers = quizContainer.querySelectorAll('.answers');
-    let numCorrect = 0;
-    
-    myQuestions.forEach((currentQuestion, questionNumber) => {
-        //code to run for each question
-        const answerContainer = answerContainers[questionNumber];
-        const selector = `input[name=question${questionNumber}]:checked`;
-        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
+    if (output.length === qNum) {
+        // run End Quiz Logic
+        // show highscore and input to enter initials
+    } else {
+        //if not last question, we want it to go to the next question
+        quizContainer.innerHTML = output[qNum];
         //if the answer is correct
-        if (userAnswer === currentQuestion.correctAnswer) {
+
+        if (!value) return;
+        if (value === myQuestions[qNum].correctAnswer) {
             //add to the number of right answers
-            numCorrect++;
+            winCount++;
 
-            answerContainers[questionNumber].textContent = "Correct!".setAttribute("style", "font-size: 11px; font-style: italic; color: #D3D3D3;");
+            document.querySelector(".feedbackCont").textContent = "Correct!"
+            document.querySelector(".feedbackCont").setAttribute("style", "font-size: 11px; font-style: italic; color: #D3D3D3;");
         } else {
-            answerContainers[questionNumber].textContent = "Wrong!".setAttribute("style", "font-size: 11px; font-style: italic; color: #D3D3D3;");
-            count = count - 10;
-        }
-    });
-
-    resultsContainer.innerHTML = `&{numCorrect} out of &{myQuestions.length}`;
+            document.querySelector(".feedbackCont").textContent = "Wrong!"
+            document.querySelector(".feedbackCont").setAttribute("style", "font-size: 11px; font-style: italic; color: #D3D3D3;");
+            timerCount -= 5;
+        };
+    };
+    qNum++;
 };
 
 
+startBtn.addEventListener('click', startQuiz);
 // //on submit, show results
 // submitButton.addEventListener('click', showResults);
