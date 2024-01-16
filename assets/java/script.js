@@ -12,8 +12,6 @@ var answers = [];
 //Consts
 const output = [];
 const quizContainer = document.querySelector('.quiz-info');
-const resultBtn = document.getElementById('results');
-const submitBtn = document.getElementById('submit');
 const myQuestions = [
     {
         question: "Arrays in Javascript can be used to store: ",
@@ -139,7 +137,7 @@ function buildQuiz() {
         }
     );
     //finally combine our output list into one string of HTML to put it on the page
-    // quizContainer.innerHTML = output[0];
+    
     showNextQuestion();
 };
 
@@ -148,6 +146,8 @@ function showNextQuestion(value) {
 
     if (output.length === qNum) {
         // run End Quiz Logic
+        endGame();
+        return;
         // show highscore and input to enter initials
     } else {
         //if not last question, we want it to go to the next question
@@ -168,9 +168,30 @@ function showNextQuestion(value) {
         };
     };
     qNum++;
+    setTimeout(showNextQuestion, 600)
+    // showNextQuestion();
 };
+
+function endGame() {
+    
+        var template = `<h4>Your score is ${winCount}</h4> <input type= "text" id="userInitials" placeholder="Submit your Initials" /> 
+        <button class="initialBtn" onclick="initScore()">Submit</button>`
+        quizContainer.innerHTML = template;
+
+}
 
 
 startBtn.addEventListener('click', startQuiz);
-// //on submit, show results
-// submitButton.addEventListener('click', showResults);
+
+
+   function initScore (){
+        var userScore = {
+            user: document.querySelector("#userInitials").value,
+            score: winCount.value,
+        }
+        var leaderboard = JSON.parse(localStorage.getItem("user score")) || [];
+        leaderboard.push(userScore);
+        localStorage.setItem("User Initials and Score", JSON.stringify(userScore));
+    };
+
+
