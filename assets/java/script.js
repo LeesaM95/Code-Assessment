@@ -158,7 +158,7 @@ function showNextQuestion(value) {
 
 function endGame() {
     let initScore = {
-        initials: document.getElementById("#userInitials").value,
+        initials: document.getElementById("#userInitials").value("userInitials"),
         score: winCount
     };
     if (startTimer === 0) {
