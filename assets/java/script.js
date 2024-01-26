@@ -8,7 +8,7 @@ var qNum = 0;
 var answers = [];
 var userScores = [
     user = document.querySelector("#userInitials").value,
-    score = winCount.valueOf()]
+    score = winCount.value,]
 
 //Consts
 const output = [];
