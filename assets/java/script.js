@@ -156,8 +156,6 @@ function showNextQuestion(value) {
     setTimeout(showNextQuestion, 600)
 };
 
-        startBtn.addEventListener('click', startQuiz);
-
 function endGame() {
 
     if (startTimer === 0) {
@@ -184,7 +182,7 @@ function userScore() {
     }
 };
 
-
+  startBtn.addEventListener('click', startQuiz);
 
 
 
