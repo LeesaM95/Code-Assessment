@@ -157,17 +157,19 @@ function showNextQuestion(value) {
 };
 
 function endGame() {
-    let initScore = {
-        initials: document.getElementById("#userInitials"),
-        score: winCount
-    };
+
     if (startTimer === 0) {
         const template = JSON.parse(`<h4>Your score is ${winCount}</h4> <input type= "text" id="userInitials" placeholder="Submit your Initials" /> 
         <button class="initialBtn" onclick="userScore()">Submit</button>`);
         quizContainer.innerHTML = template;
-       localStorage.setItem('User Initials and Score', JSON.stringify(initScore)); 
+
+        let initScore = {
+            initials: document.getElementById("#userInitials"),
+            score: winCount
+        };
+        localStorage.setItem('User Initials and Score', JSON.stringify(initScore));
     };
-    return userScore(); 
+    return userScore();
 }
 
 function userScore() {
