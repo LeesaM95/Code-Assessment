@@ -158,7 +158,7 @@ function showNextQuestion(value) {
 
 function endGame() {
     let initScore = {
-        initials: document.querySelectorAll("#userInitials").value,
+        initials: document.getElementById("#userInitials").value,
         score: winCount
     };
 
