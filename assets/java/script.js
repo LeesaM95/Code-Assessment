@@ -69,12 +69,12 @@ const myQuestions = [
 
 //function for the timer
 function startTimer() {
-  
+
     timer = setInterval(function () {
         timerCount--;
         timerElm.textContent = timerCount;
         if (timerCount >= 0) {
-           
+
             if (isWin && timerCount > 0) {
                 clearInterval(timer);
                 winGame();
@@ -104,9 +104,9 @@ function buildQuiz() {
 
     myQuestions.forEach(
         (currentQuestion, questionNumber) => {
-           
+
             answers = []
-      
+
             for (letter in currentQuestion.answers) {
 
                 answers.push(
@@ -161,21 +161,22 @@ function endGame() {
         initials: document.getElementById("#userInitials").value,
         score: winCount
     };
-
-        var template = `<h4>Your score is ${winCount}</h4> <input type= "text" id="userInitials" placeholder="Submit your Initials" /> 
-        <button class="initialBtn" onclick="userScore()">Submit</button>`
+    if (startTimer === 0) {
+        const template = JSON.parse(`<h4>Your score is ${winCount}</h4> <input type= "text" id="userInitials" placeholder="Submit your Initials" /> 
+        <button class="initialBtn" onclick="userScore()">Submit</button>`);
         quizContainer.innerHTML = template;
-
-        localStorage.setItem('User Initials and Score', JSON.stringify(initScore));
- }       
+       localStorage.setItem('User Initials and Score', JSON.stringify(initScore)); 
+    };
+    return userScore(); 
+}
 
 function userScore() {
-          if(isWin == true) {
-            return endGame();
-          } else {
-            return startQuiz();
-          }
-        };
+    if (isWin == true) {
+        return endGame();
+    } else {
+        return startQuiz();
+    }
+};
 
 
 startBtn.addEventListener('click', startQuiz);
