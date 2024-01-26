@@ -8,7 +8,7 @@ var qNum = 0;
 var answers = [];
 var userScores = [
     user = document.querySelector("#userInitials").value,
-    score = winCount.value,]
+    score = winCount,]
 
 //Consts
 const output = [];
@@ -66,17 +66,17 @@ const myQuestions = [
     },
 ];
 
-//Functions
+
 
 
 //function for the timer
 function startTimer() {
-    //set the timer
+  
     timer = setInterval(function () {
         timerCount--;
         timerElm.textContent = timerCount;
         if (timerCount >= 0) {
-            //tests if win condit is met
+           
             if (isWin && timerCount > 0) {
                 clearInterval(timer);
                 winGame();
@@ -84,7 +84,6 @@ function startTimer() {
         }
         if (timerCount === 0) {
             clearInterval(timer);
-            // return LeaderBoard();
         }
     }, 1000);
 }
@@ -95,7 +94,6 @@ function startQuiz() {
     isWin = false;
     timerCount = 30;
     console.log('startQuiz');
-    //prevent the start button from being clicked when the quiz starts
 
     startBtn.disabled = true;
     buildQuiz();
@@ -105,19 +103,14 @@ function startQuiz() {
 
 //function for the quiz
 function buildQuiz() {
-    //variable to store the HTML output
 
-
-    //for each question
     myQuestions.forEach(
         (currentQuestion, questionNumber) => {
-            // qNum++;
-            // variable to store the list of possible answers
+           
             answers = []
-            // and for each available answer
+      
             for (letter in currentQuestion.answers) {
 
-                // add an HTML radio button
                 answers.push(
                     `<label>
                 <input type="radio" name="question${questionNumber}" value="${letter}" onclick="showNextQuestion('${letter}')">
@@ -137,28 +130,19 @@ function buildQuiz() {
 
         }
     );
-    //finally combine our output list into one string of HTML to put it on the page
-    
     showNextQuestion();
 };
 
 function showNextQuestion(value) {
 
-
     if (output.length === qNum) {
-        // run End Quiz Logic
         endGame();
         return;
-        // show highscore and input to enter initials
     } else {
-        //if not last question, we want it to go to the next question
         quizContainer.innerHTML = output[qNum];
 
-        //if the answer is correct
         if (!value) return;
         if (value === myQuestions[qNum].correctAnswer) {
-
-            //add to the number of right answers
             winCount++;
 
             document.querySelector(".feedbackCont").textContent = "Correct!"
@@ -169,9 +153,9 @@ function showNextQuestion(value) {
             timerCount -= 5;
         };
     };
+
     qNum++;
     setTimeout(showNextQuestion, 600)
-    // showNextQuestion();
 };
 
 function endGame() {
@@ -179,16 +163,18 @@ function endGame() {
         var template = `<h4>Your score is ${winCount}</h4> <input type= "text" id="userInitials" placeholder="Submit your Initials" /> 
         <button class="initialBtn" onclick="userScore()">Submit</button>`
         quizContainer.innerHTML = template;
-
+        localStorage.setItem('User Initials and Score', JSON.stringify(userScores));
  }       
 
 function userScore() {
-          if(endGame) {
-            localStorage.setItem('User Initials and Score', JSON.stringify(userScores));
+          if(isWin) {
+            
+            return endGame();
           } else {
             return startQuiz();
           }
-        }
+        };
+
 
 startBtn.addEventListener('click', startQuiz);
 
