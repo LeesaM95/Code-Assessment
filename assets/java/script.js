@@ -175,7 +175,7 @@ function endGame() {
     };
     return endGame(); 
 }
-return userScore();
+
 
 function userScore() {
     if (isWin == true) {
@@ -184,7 +184,7 @@ function userScore() {
         return startQuiz();
     }
 };
-
+return userScore();
 
 
 
