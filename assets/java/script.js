@@ -1,13 +1,14 @@
 //Variables
 var timerElm = document.getElementById("time");
-var myScores = document.getElementById("score");
 var startBtn = document.getElementById("btn-start");
 var winCount = 0;
-var LossCount = 0;
 var isWin = false;
 var sec = 30;
 var qNum = 0;
 var answers = [];
+var userScores = [
+    user = document.querySelector("#userInitials").value,
+    score = winCount.valueOf()]
 
 //Consts
 const output = [];
@@ -83,7 +84,7 @@ function startTimer() {
         }
         if (timerCount === 0) {
             clearInterval(timer);
-            // loseGame();
+            // return LeaderBoard();
         }
     }, 1000);
 }
@@ -152,10 +153,11 @@ function showNextQuestion(value) {
     } else {
         //if not last question, we want it to go to the next question
         quizContainer.innerHTML = output[qNum];
-        //if the answer is correct
 
+        //if the answer is correct
         if (!value) return;
         if (value === myQuestions[qNum].correctAnswer) {
+
             //add to the number of right answers
             winCount++;
 
@@ -175,23 +177,19 @@ function showNextQuestion(value) {
 function endGame() {
     
         var template = `<h4>Your score is ${winCount}</h4> <input type= "text" id="userInitials" placeholder="Submit your Initials" /> 
-        <button class="initialBtn" onclick="initScore()">Submit</button>`
+        <button class="initialBtn" onclick="userScore()">Submit</button>`
         quizContainer.innerHTML = template;
 
-}
+ }       
 
+function userScore() {
+          if(endGame) {
+            localStorage.setItem('User Initials and Score', JSON.stringify(userScores));
+          } else {
+            return startQuiz();
+          }
+        }
 
 startBtn.addEventListener('click', startQuiz);
-
-
-   function initScore (){
-        var userScore = {
-            user: document.querySelector("#userInitials").value,
-            score: winCount.value,
-        }
-        var leaderboard = JSON.parse(localStorage.getItem("user score")) || [];
-        leaderboard.push(userScore);
-        localStorage.setItem("User Initials and Score", JSON.stringify(userScore));
-    };
 
 

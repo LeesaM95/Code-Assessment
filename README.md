@@ -1,99 +1,39 @@
-# 04 Web APIs: Code Quiz
+# Code Assessment
 
-## Your Task
+## Description
+Code Assessment is an application that allows a user to test their coding knowledge in an easy to navigate form. Users have five multiple choice questions to answer within a limited timeframe of 30 seconds. At the end of the quiz, users can submit their initials and their score. Users will be able to try retaking the quiz as many times as they'd like. 
 
-At some point in your journey to become a full-stack web developer, you’ll likely be asked to complete a coding assessment&mdash;perhaps as part of an interview process. A typical coding assessment includes both multiple-choice questions and interactive coding challenges. 
+## Visuals
 
-To help familiarize you with these tests and allow you to use the skills covered in this module, this Challenge invites you to build a timed coding quiz with multiple-choice questions. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface. 
+## Installation
+This application does not require any downloading whatsoever to run. A user will simply click on the Start Quiz button, answer the questions, and submit their score. 
 
-This week’s coursework will equip you with all the skills you need to succeed in this assignment.
+## Support 
+If there are any problems with the code, such as something showing up wrong, not showing up at all, text not saving or the Assessment not running, feel free to contact me at LeesaM95 on GitHub, leesamarie95@gmail.com, or the GitHub help forum. 
 
-## User Story
+## Roadmap
+There are a lot of things I'd like to work on for this project as I'm sure I'm sending this in with many, many bugs. I'd like to make sure the saving function works all of the way, add some more questions to truly make the Assessment an Assessment, and code in a leaderboard html file and script code so all of the scores submitted is kept in one nice and neat leaderboard. I would also love to make this available to more than just local storage, and create a Dark Mode in CSS so the colors aren't so blinding. 
 
-```
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
+## Contributing
+I'm more than open to having contributors join in and make positive changes to streamline the code. As always, please message me on GitHub or via my email Leesamarie95@gmail.com to gain access. I would suggest checking under the hood to get a sense of how the code works through the console. Logging the functions will be a great way to see if everything is still functioning as I intended, or if it's decided to fall apart like soggy bread. 
 
-## Acceptance Criteria
+Though I enjoy the help, I would like to specify that I only wish for aid in:
 
-```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and my score
-```
+A. Streamlining the code so it doesn't look so messy.
+B. Bug Fixes (Since I know my java code is going to end up bugged out)
+C. Code enhancements, including the additions of better functions.
 
-## Mock-Up
+## Authors and Acknowledgment
+As Always, I thank my instructors, my tutors, advisors, and fellow classmates for guiding me, helping, and instructing me on the right path when I was otherwise stuck. I'm consistently turning in things late due to my own terrible perfectionism, so I also appreciate the patients of the anonymous graders who seem to be handed a mountain of my work last minute. 
 
-The following animation demonstrates the application functionality:
+## License
+MIT License
 
-![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./Assets/04-web-apis-homework-demo.gif)
+Copyright (c) 2023 LeesaM95
 
-## Grading Requirements
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-This Challenge is graded based on the following criteria: 
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the preceding acceptance criteria.
-
-### Deployment: 32%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository contains application code.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the Challenge instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality readme file with description, screenshot, and link to deployed application.
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
-
----
-
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+## Project Status
+This project is still ongoing, albeit slowly. I would love to implement the features described in #Roadmap, however with my time constrictions, that will have to wait until I have a little more time and knowledge under my belt.
