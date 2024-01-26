@@ -6,9 +6,7 @@ var isWin = false;
 var sec = 30;
 var qNum = 0;
 var answers = [];
-var userScores = [
-    user = document.querySelector("#userInitials").value,
-    score = winCount,]
+
 
 //Consts
 const output = [];
@@ -159,7 +157,9 @@ function showNextQuestion(value) {
 };
 
 function endGame() {
-    
+    var userScores = [
+        user = document.querySelector("#userInitials").value,
+        score = winCount,]
         var template = `<h4>Your score is ${winCount}</h4> <input type= "text" id="userInitials" placeholder="Submit your Initials" /> 
         <button class="initialBtn" onclick="userScore()">Submit</button>`
         quizContainer.innerHTML = template;
