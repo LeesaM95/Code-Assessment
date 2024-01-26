@@ -167,6 +167,8 @@ function endGame() {
             initials: document.getElementById("#userInitials"),
             score: winCount
         };
+
+        quizContainer.appendChild(template);
         localStorage.setItem('User Initials and Score', JSON.stringify(initScore));
     };
     return userScore();
