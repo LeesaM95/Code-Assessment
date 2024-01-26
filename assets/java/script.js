@@ -184,7 +184,7 @@ function userScore() {
         return startQuiz();
     }
 };
-return userScore();
+
 
 
 
