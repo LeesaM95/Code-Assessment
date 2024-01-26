@@ -170,8 +170,7 @@ function endGame() {
  }       
 
 function userScore() {
-          if(isWin) {
-            
+          if(isWin == true) {
             return endGame();
           } else {
             return startQuiz();
