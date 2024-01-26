@@ -174,8 +174,7 @@ function endGame() {
         localStorage.setItem('User Initials and Score', JSON.stringify(initScore));
     };
     return endGame(); 
-}
-
+};
 
 function userScore() {
     if (isWin == true) {
