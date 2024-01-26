@@ -156,6 +156,8 @@ function showNextQuestion(value) {
     setTimeout(showNextQuestion, 600)
 };
 
+        startBtn.addEventListener('click', startQuiz);
+
 function endGame() {
 
     if (startTimer === 0) {
@@ -171,8 +173,9 @@ function endGame() {
         quizContainer.appendChild(template);
         localStorage.setItem('User Initials and Score', JSON.stringify(initScore));
     };
-    return userScore();
+    return endGame(); 
 }
+return userScore();
 
 function userScore() {
     if (isWin == true) {
@@ -183,6 +186,6 @@ function userScore() {
 };
 
 
-startBtn.addEventListener('click', startQuiz);
+
 
 
