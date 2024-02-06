@@ -1,6 +1,7 @@
 //Variables
 var timerElm = document.getElementById("time");
 var startBtn = document.getElementById("btn-start");
+var infoBlurb = document.getElementById("info-blurb");
 var winCount = 0;
 var isWin = false;
 var sec = 30;
@@ -65,7 +66,7 @@ const myQuestions = [
 ];
 
 
-
+startBtn.addEventListener('click', startQuiz);
 
 //function for the timer
 function startTimer() {
@@ -158,31 +159,30 @@ function showNextQuestion(value) {
 
 function endGame() {
 
-    if (startTimer === 0) {
-        const template = JSON.parse(`<h4>Your score is ${winCount}</h4> <input type= "text" id="userInitials" placeholder="Submit your Initials" /> 
-        <button class="initialBtn" onclick="userScore()">Submit</button>`);
-        quizContainer.innerHTML = template;
+    qNum = 0;
+    sec = 0;
 
-        let initScore = {
-            initials: document.getElementById("#userInitials"),
-            score: winCount
-        };
+    let submitBtn = document.createElement("button");
+    submitBtn.innerHTML = "submit-btn";
+    submitBtn.appendChild(startBtn);
 
-        quizContainer.appendChild(template);
-        localStorage.setItem('User Initials and Score', JSON.stringify(initScore));
-    };
-    return endGame(); 
+    let submitScore = document.createElement("div");
+    submitScore.innerHTML = "submit-score";
+    submitScore.textContent = "You finished! Your final score is " + winCount + ". Submit your score!";
+    submitScore.appendChild(quizContainer);
+
+    let scoreForm = document.createElement("p");
+    scoreForm.innerHTML = "score-form";
+    scoreForm.appendChild(infoBlurb);
+
+    
 };
 
-function userScore() {
-    if (isWin == true) {
-        return endGame();
-    } else {
-        return startQuiz();
-    }
-};
+submitScore.addEventListener("submit", function(event) {
 
-  startBtn.addEventListener('click', startQuiz);
+})
+
+  
 
 
 

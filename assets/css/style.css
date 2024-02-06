@@ -77,7 +77,7 @@ footer {
     color: var(--color3);
 }
 
-.btns {
+#btn-start #submit-btn {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
