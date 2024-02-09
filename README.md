@@ -26,6 +26,8 @@ C. Code enhancements, including the additions of better functions.
 ## Authors and Acknowledgment
 As Always, I thank my instructors, my tutors, advisors, and fellow classmates for guiding me, helping, and instructing me on the right path when I was otherwise stuck. I'm consistently turning in things late due to my own terrible perfectionism, so I also appreciate the patients of the anonymous graders who seem to be handed a mountain of my work last minute. 
 
+I also want to give thanks to GitHub user __jamierachael__. I was struggling something fierce with the local storage aspect, and looking through their code made it way easier to understand what in the world I was supposed to be doing. I'm so very lucky to be able to gain guidance from those who have already gone through these exercises before me. 
+
 ## License
 MIT License
 
