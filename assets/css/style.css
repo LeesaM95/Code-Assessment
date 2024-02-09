@@ -86,6 +86,11 @@ footer {
     margin: 5%;
 }
 
-
+#initials {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    margin: 10px;
+}
 
 
