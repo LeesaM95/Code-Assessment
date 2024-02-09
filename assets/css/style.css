@@ -77,7 +77,7 @@ footer {
     color: var(--color3);
 }
 
-#btn-start #submit-btn {
+#btn-start #submit-btn #btn-bk {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -91,6 +91,7 @@ footer {
     flex-direction: row;
     align-self: center;
     margin: 10px;
+    padding: 10px;
 }
 
 
