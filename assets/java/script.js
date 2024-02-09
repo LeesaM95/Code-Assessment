@@ -162,25 +162,56 @@ function endGame() {
     qNum = 0;
     sec = 0;
 
-    let submitBtn = document.createElement("button");
-    submitBtn.innerHTML = "submit-btn";
+    
+ if (timerCount >= 0) {
+    
+    var scoreForm = document.createElement("p");
+    scoreForm.setAttribute("id", "info-blurb")
+    scoreForm.textContent = "You finished! Your final score is " + winCount + ". Submit your score!";
+    
+    clearInterval();
+
+    scoreForm.appendChild(infoBlurb);
+    };
+
+    var initInput = document.createElement("input");
+    initInput.setAttribute("type", "text");
+    initInput.setAttribute("id", "initials");
+    initInput.textcontent = "";
+
+    quizContainer.appendChild(initInput);
+
+    var submitBtn = document.createElement("button");
+    submitBtn.setAttribute("type", "submit");
+    submitBtn.setAttribute("id", "submit-btn");
+    submitBtn.textContent = "Submit";
     submitBtn.appendChild(startBtn);
 
-    let submitScore = document.createElement("div");
-    submitScore.innerHTML = "submit-score";
-    submitScore.textContent = "You finished! Your final score is " + winCount + ". Submit your score!";
-    submitScore.appendChild(quizContainer);
+    submitBtn.addEventListener("click", function() {
+        var initials = initInput.value;
 
-    let scoreForm = document.createElement("p");
-    scoreForm.innerHTML = "score-form";
-    scoreForm.appendChild(infoBlurb);
+        if (initials === null) {
+            console.log("Nothing Entered!")
+        } else {
+            var userScore = {
+                initials: initials,
+                score: winCount
+            }
+            console.log(userScore);
+            var highScores = localStorage.getItem("highScores");
+            if (highScores === null) {
+                highScores = [];
+            } else {
+                highScores = JSON.parse(highScores);
+            }
+            highScores.push(userScore);
+            var newScore = JSON.stringify(highScores);
+            localStorage.setItem("allScores", newScore);
 
-    
+        }
+    })
 };
 
-submitScore.addEventListener("submit", function(event) {
-
-})
 
   
 
