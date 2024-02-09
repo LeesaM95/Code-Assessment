@@ -184,7 +184,7 @@ function endGame() {
     var submitBtn = document.createElement("button");
     submitBtn.setAttribute("type", "submit");
     submitBtn.setAttribute("id", "submit-btn");
-    submitBtn.textContent = "Submit";
+    submitBtn.textContent = "Submit Your Initials";
     startBtn.appendChild(submitBtn);
 
     submitBtn.addEventListener("click", function() {
@@ -207,9 +207,9 @@ function endGame() {
             highScores.push(userScore);
             var newScore = JSON.stringify(highScores);
             localStorage.setItem("allScores", newScore);
-
         }
     })
+    endGame();
 };
 
 
