@@ -185,7 +185,7 @@ function endGame() {
     submitBtn.setAttribute("type", "submit");
     submitBtn.setAttribute("id", "submit-btn");
     submitBtn.textContent = "Submit";
-    submitBtn.appendChild(startBtn);
+    startBtn.appendChild(submitBtn);
 
     submitBtn.addEventListener("click", function() {
         var initials = initInput.value;
